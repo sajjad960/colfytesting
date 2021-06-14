@@ -35,6 +35,15 @@ exports.getAllProducts = async (req, res) => {
 
     // const products = await features.query;
 
+    //for accessing from localhost
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
     //Aggregation
 
     const products = await Products.aggregate([
@@ -74,6 +83,16 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getProduct = async (req, res, next) => {
   try {
+    //for accessing from localhost
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "PUT, POST, GET, DELETE, PATCH, OPTIONS"
+    );
+
     const product = await Products.findById(req.params.id);
 
     if (!product) {
